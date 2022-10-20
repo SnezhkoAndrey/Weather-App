@@ -1,0 +1,102 @@
+.weatherDay {
+        display: grid;
+        grid-auto-flow: column;
+        scroll-behavior: auto;
+        gap: 1.2rem;
+        overflow-y: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+.weatherDay::-webkit-scrollbar {
+    display: none;
+}
+
+.hourDayInfo {
+    margin: 0 0 20px 0;
+    padding: 0 20px 5px 20px;
+    width: 220px;
+    border-radius: 10px;
+    background-color: rgba(51, 51, 51, 0.653);
+    box-sizing: border-box;
+}
+
+.hourTime {
+    margin: 10px -10px;
+    padding: 5px 0;
+    font-weight: 600;
+    font-size: 15px;
+    background-color: rgba(44, 44, 44, 0.596);
+    border-radius: 5px;
+}
+
+.hourIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 5px auto;
+    gap: 8px;
+    background-color: rgba(62, 62, 62, 0.596);
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.hourIcon img {
+    width: 30px;
+    height: 35px;
+    object-fit: cover;
+}
+
+.hourItem {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(62, 62, 62, 0.596);
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 5px auto;
+}
+
+.hourTitle {
+    margin: 0 5px 0 0;
+    color:rgba(255, 255, 255, 0.744)
+}
+
+.hourText {
+    font-weight: 600;
+}
+
+@media (max-width: 450px) {
+    .hourDayInfo {
+        width: 800px;
+    }
+
+    .hourTime {
+        width: 70%;
+        height: fit-content;
+        font-size: 40px;
+        margin: 20px auto;
+        padding: 10px 0;
+    }
+
+    .hourIcon {
+        width: 60%;
+        height: fit-content;
+        font-size: 30px;
+        padding: 0 0 15px 0;
+    }
+
+    .hourIcon img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .hourItem {
+        width: 60%;
+        height: fit-content;
+        font-size: 30px;
+        margin: 10px auto;
+        padding: 10px 0;
+    }
+}
