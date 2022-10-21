@@ -4,7 +4,7 @@ export const currentWeatherAPI = {
   getCurrentWeather(city: string | number[] | null) {
     let options = {
       method: "GET",
-      url: "http://api.weatherapi.com/v1/current.json",
+      url: "https://api.weatherapi.com/v1/current.json",
       params: {
         q: `${city}`,
         key: `7cccd13bf522431bbc7145324221910`,
@@ -17,7 +17,7 @@ export const forecastWeatherAPI = {
   getForecastWeather(city: string | number[] | null) {
     let options = {
       method: "GET",
-      url: "http://api.weatherapi.com/v1/forecast.json",
+      url: "https://api.weatherapi.com/v1/forecast.json",
       params: {
         q: `${city}`,
         key: `7cccd13bf522431bbc7145324221910`,

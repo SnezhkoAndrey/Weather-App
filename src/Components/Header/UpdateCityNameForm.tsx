@@ -29,21 +29,27 @@ export const UpdateCityNameForm: React.FC<PropsType> = React.memo((props) => {
       {({}) => (
         <Form>
           <div className={style.findForm}>
-            <div>
-              <Field
-                className={style.findList}
-                name={"cityName"}
-                type={"text"}
-                placeholder="Enter your city..."
-              />
+            <div className={style.findParams}>
+              <div className={style.findListItem}>
+                <Field
+                  className={style.findList}
+                  name={"cityName"}
+                  type={"text"}
+                  placeholder="Enter your city..."
+                />
+              </div>
+              <div className={style.tempOptionItem}>
+                <Field
+                  className={style.tempOption}
+                  name="tempType"
+                  as={"select"}
+                >
+                  <option value="true">°C</option>
+                  <option value="false">°F</option>
+                </Field>
+              </div>
             </div>
-            <div>
-              <Field className={style.tempOption} name="tempType" as={"select"}>
-                <option value="true">°C</option>
-                <option value="false">°F</option>
-              </Field>
-            </div>
-            <div>
+            <div className={style.buttonFindItem}>
               <button className={style.buttonFind} type={"submit"}>
                 Find
               </button>

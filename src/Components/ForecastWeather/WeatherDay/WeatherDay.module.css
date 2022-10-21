@@ -69,22 +69,23 @@
 
 @media (max-width: 450px) {
     .hourDayInfo {
-        width: 800px;
+        width: 350px;
+        margin: 0 0 20px 10px;
     }
 
     .hourTime {
-        width: 70%;
+        width: 90%;
         height: fit-content;
-        font-size: 40px;
+        font-size: 30px;
         margin: 20px auto;
         padding: 10px 0;
     }
 
     .hourIcon {
-        width: 60%;
+        width: 80%;
         height: fit-content;
-        font-size: 30px;
-        padding: 0 0 15px 0;
+        font-size: 20px;
+        padding: 0;
     }
 
     .hourIcon img {
@@ -93,9 +94,9 @@
     }
 
     .hourItem {
-        width: 60%;
+        width: 80%;
         height: fit-content;
-        font-size: 30px;
+        font-size: 20px;
         margin: 10px auto;
         padding: 10px 0;
     }

@@ -73,31 +73,32 @@
 
 @media (max-width: 450px) {
     .navlink {
-        width: 40%;
-        height: 80px;
-        font-size: 40px;
-        padding: 20px 0 0 0;
+        width: 50%;
+        height: 40px;
+        font-size: 20px;
+        padding: 10px 0 0 0;
         margin: 0;
     }
 
     .info {
         flex-direction: column;
         align-items: center;
+        margin: 0 0 10px 0;
     }
 
     .infoCity {
-        width: 90%;
+        width: 80%;
         height: fit-content;
     }
 
     .locationName {
-        font-size: 90px;
-        margin: 0;
+        font-size: 40px;
+        margin: 10px 0 0 0;
     }
 
     .localTime {
-        font-size: 30px;
-        margin: 0 0 30px 0;
+        font-size: 15px;
+        margin: 0 0 20px 0;
     }
 
     .infoIcon {
@@ -113,22 +114,22 @@
         height: fit-content;
         margin: 0 auto 20px auto ;
         padding: 0 0 20px 0;
-        font-size: 40px;
+        font-size: 20px;
     }
 
     .currentIcon {
-        height: 150px;
-        width: 150px;
+        height: 100px;
+        width: 100px;
     }
 
     .infoWeatherItem {
         width: 90%;
         height: fit-content;
         margin: 0 auto 20px auto;
-        font-size: 40px;
+        font-size: 20px;
     }
 
     .lastUpdate {
-        font-size: 30px;
+        font-size: 10px;
     }
 }

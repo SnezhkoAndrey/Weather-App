@@ -63,21 +63,21 @@
 
 @media (max-width: 450px) {
     .navlink {
-        width: 40%;
-        height: 80px;
-        font-size: 40px;
-        padding: 20px 0 0 0;
+        width: 50%;
+        height: 40px;
+        font-size: 20px;
+        padding: 10px 0 0 0;
         margin: 0;
     }
 
     .infoLocation {
         flex-direction: column;
-        margin: 0 0 30px 0;
+        margin: 20px 0 20px 0;
     }
 
     .locationName {
         width: fit-content;
-        font-size: 90px;
+        font-size: 40px;
     }
 
     .locationCountryRegion {
@@ -87,11 +87,12 @@
 
     .locationLocalTime {
         width: fit-content;
-        font-size: 30px;
+        font-size: 15px;
     }
 
     .lastUpdate {
-        font-size: 30px;
+        font-size: 15px;
     }
+    
 }
 

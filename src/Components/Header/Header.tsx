@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 import useGeolocation from "react-hook-geolocation";
 import { UpdateCityNameForm } from "./UpdateCityNameForm";
+import { NavLink } from "react-router-dom";
 
 export const Header = React.memo(() => {
   const errorMessage = useSelector(
@@ -40,16 +41,17 @@ export const Header = React.memo(() => {
     }
   }, [geolocationCoordinates]);
 
-  if (!!errorMessage) {
-    console.log(errorMessage);
-    toast.error(errorMessage, {
-      style: {
-        background: "#333",
-        color: "#fff",
-        boxShadow: "0.1px 0.1px 3px 1px red",
-      },
-    });
-  }
+  useEffect(() => {
+    if (!!errorMessage) {
+      toast.error(errorMessage, {
+        style: {
+          background: "#333",
+          color: "#fff",
+          boxShadow: "0.1px 0.1px 3px 1px red",
+        },
+      });
+    }
+  }, [errorMessage]);
 
   return (
     <div className={style.header}>
@@ -57,10 +59,12 @@ export const Header = React.memo(() => {
         <div>
           <Toaster />
         </div>
-        <img className={style.logoImage} src={logo} />
-        <h4>WeatherApp</h4>
+        <NavLink className={style.logoNavlink} to={"/"}>
+          <img className={style.logoImage} src={logo} />
+          <h4>WeatherApp</h4>
+        </NavLink>
       </div>
-      <div>
+      <div className={style.updateForm}>
         <UpdateCityNameForm
           updateCityName={updateCityName}
           updateTempType={updateTempType}

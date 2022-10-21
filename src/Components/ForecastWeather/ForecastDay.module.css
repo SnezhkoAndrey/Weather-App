@@ -79,7 +79,8 @@
 
 @media (max-width: 450px) {
     .forecastDay {
-        width: 700px;
+        margin: 0 0 20px 10px;
+        width: 350px;
         height: fit-content;
     }
 
@@ -88,29 +89,29 @@
     }
 
     .forecastDate {
-        width: 60%;
-        font-size: 50px;
+        width: 90%;
+        font-size: 30px;
         margin: 20px auto;
         padding: 10px 0;
     }
 
     .forecastMaxTemp, .forecastMinTemp {
-        width: 40%;
+        width: 80%;
         font-size: 30px;
         margin: 10px auto;
         padding: 10px 0;
     }
 
     .chanceOfRain, .sunrise, .sunset {
-        width: 50%;
-        font-size: 30px;
+        width: 80%;
+        font-size: 20px;
         margin: 10px auto;
         padding: 10px 0;
     }
     
     .buttonDetails button {
         width: 40%;
-        height: 70px;
+        height: 50px;
         font-size: 30px;
         margin: 20px auto;
     }
