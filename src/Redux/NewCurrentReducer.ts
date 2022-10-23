@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { currentWeatherAPI } from "../API/api";
-import { ErrorType } from "../Types/types";
 import { AppStateType, InferActionsTypes } from "./NewStore";
 import { ThunkAction } from "redux-thunk";
 import { setError, toggleIsFetching } from "./GeneralReducer";

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { forecastWeatherAPI } from "../API/api";
-import { ErrorType, ForecastDayType } from "../Types/types";
+import { ForecastDayType } from "../types/types";
 import { AppStateType, InferActionsTypes } from "./NewStore";
 import { ThunkAction } from "redux-thunk";
 import { setError, toggleIsFetching } from "./GeneralReducer";

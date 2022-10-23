@@ -1,22 +1,20 @@
 import React from "react";
 import "./App.css";
-import { Header } from "./Components/Header/Header";
-import { ForecastWeather } from "./Components/ForecastWeather/ForecastWeather";
-import { CurrentWeather } from "./Components/CurrentWeather/CurrentWeather";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Header } from "./components/Header/Header";
+import AppRoutes from "./AppRoutes";
+import { useSelector } from "react-redux";
+import { AppStateType } from "./redux/NewStore";
 
 const App = React.memo(() => {
+  const theme = useSelector((state: AppStateType) => state.general.theme);
+
   return (
-    <div className="app-wrapper">
-      <div>
+    <div className={theme ? "app light" : "app"}>
+      <div className={theme ? "app-wrapper light" : "app-wrapper"}>
         <Header />
-      </div>
-      <div className="infoWeather">
-        <Routes>
-          <Route path="/" element={<Navigate to={"/current"} />} />
-          <Route path="/forecast" element={<ForecastWeather />} />
-          <Route path="/current" element={<CurrentWeather />} />
-        </Routes>
+        <div className={theme ? "infoWeather light" : "infoWeather"}>
+          <AppRoutes />
+        </div>
       </div>
     </div>
   );

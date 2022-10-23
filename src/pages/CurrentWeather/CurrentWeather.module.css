@@ -10,10 +10,20 @@
     box-shadow: 4px 4px 5px rgb(28, 28, 28);
 }
 
+.navlink.light {
+    border: 1px solid rgb(51, 51, 51);
+    background-color: rgba(173, 171, 171, 0.685);
+    color: #24262c
+}
+
 .navlink:hover {
     color: #fff;
     background-color: #345678b9;
     box-shadow: 0.1px 0.1px 5px 1px rgb(155, 155, 155);
+}
+
+.navlink.light:hover {
+    box-shadow: 0.1px 0.1px 5px 1px rgb(18, 18, 18);
 }
 
 .info {
@@ -44,6 +54,10 @@
     margin: 0 0 10px 0;
 }
 
+.currentIconItem.light {
+    background-color: #E5E5E5;
+}
+
 .currentIcon {
     margin: 15px 0 0 0;
     width: 100px;
@@ -58,8 +72,16 @@
     border-radius: 10px;
 }
 
+.infoWeatherItem.light {
+    background-color: #E5E5E5;
+}
+
 .titleName {
     color:rgba(255, 255, 255, 0.744)
+}
+
+.titleName.light {
+    color:#24262cd4
 }
 
 .infotext {

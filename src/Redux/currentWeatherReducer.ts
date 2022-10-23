@@ -1,7 +1,7 @@
 import { currentWeatherAPI } from "../API/api";
 import { AppStateType, InferActionsTypes } from "./store";
 import { ThunkAction } from "redux-thunk";
-import { CurrentWeatherDataType, ErrorType } from "../Types/types";
+import { CurrentWeatherDataType, ErrorType } from "../types/types";
 
 let initialState = {
   isFetching: false,

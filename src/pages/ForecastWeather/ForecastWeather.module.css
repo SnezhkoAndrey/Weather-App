@@ -9,10 +9,20 @@
     box-shadow: 4px 4px 5px rgb(28, 28, 28);
 }
 
+.navlink.light {
+    border: 1px solid rgb(51, 51, 51);
+    background-color: rgba(173, 171, 171, 0.685);
+    color: #24262c
+}
+
 .navlink:hover {
     color: #fff;
     background-color: #345678b9;
     box-shadow: 0.1px 0.1px 5px 1px rgb(155, 155, 155);
+}
+
+.navlink.light:hover {
+    box-shadow: 0.1px 0.1px 5px 1px rgb(18, 18, 18);
 }
 
 .infoLocation {
@@ -47,10 +57,6 @@
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-}
-
-.forecastDay.active {
-    border: 3px solid red;
 }
 
 .forecastDay::-webkit-scrollbar {

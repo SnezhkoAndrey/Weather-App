@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ErrorType } from "../Types/types";
+import { ErrorType } from "../types/types";
 
 const generalSlice = createSlice({
   name: "general",
@@ -8,6 +8,7 @@ const generalSlice = createSlice({
     error: null as ErrorType | null,
     cityName: "London" as string | number[],
     tempSelect: true,
+    theme: false,
   },
   reducers: {
     setError(state, action) {
@@ -25,6 +26,9 @@ const generalSlice = createSlice({
     toggleIsFetching(state, action) {
       state.isFetching = action.payload;
     },
+    changeTheme(state, action) {
+      state.theme = action.payload;
+    },
   },
 });
 
@@ -35,4 +39,5 @@ export const {
   updateCityNameWithCoordinates,
   updateTempTypeAC,
   toggleIsFetching,
+  changeTheme,
 } = generalSlice.actions;

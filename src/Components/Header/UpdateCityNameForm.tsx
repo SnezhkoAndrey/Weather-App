@@ -5,6 +5,7 @@ import style from "./Header.module.css";
 type PropsType = {
   updateCityName: (NewCityName: string) => void;
   updateTempType: (NewTempSelect: boolean) => void;
+  theme: boolean;
 };
 
 export const UpdateCityNameForm: React.FC<PropsType> = React.memo((props) => {
@@ -32,7 +33,11 @@ export const UpdateCityNameForm: React.FC<PropsType> = React.memo((props) => {
             <div className={style.findParams}>
               <div className={style.findListItem}>
                 <Field
-                  className={style.findList}
+                  className={
+                    props.theme
+                      ? `${style.findList} ${style.light}`
+                      : style.findList
+                  }
                   name={"cityName"}
                   type={"text"}
                   placeholder="Enter your city..."
@@ -40,7 +45,11 @@ export const UpdateCityNameForm: React.FC<PropsType> = React.memo((props) => {
               </div>
               <div className={style.tempOptionItem}>
                 <Field
-                  className={style.tempOption}
+                  className={
+                    props.theme
+                      ? `${style.tempOption} ${style.light}`
+                      : style.tempOption
+                  }
                   name="tempType"
                   as={"select"}
                 >
@@ -50,7 +59,14 @@ export const UpdateCityNameForm: React.FC<PropsType> = React.memo((props) => {
               </div>
             </div>
             <div className={style.buttonFindItem}>
-              <button className={style.buttonFind} type={"submit"}>
+              <button
+                className={
+                  props.theme
+                    ? `${style.buttonFind} ${style.light}`
+                    : style.buttonFind
+                }
+                type={"submit"}
+              >
                 Find
               </button>
             </div>

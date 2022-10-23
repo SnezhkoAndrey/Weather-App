@@ -5,7 +5,7 @@ import {
   ErrorType,
   ForecastDayType,
   ForecastWeatherDataType,
-} from "../Types/types";
+} from "../types/types";
 
 let initialState = {
   isFetching: false,

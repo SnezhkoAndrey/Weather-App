@@ -5,21 +5,23 @@ import {
   updateCityNameAC,
   updateCityNameWithCoordinates,
   updateTempTypeAC,
-} from "../../Redux/GeneralReducer";
+} from "../../redux/GeneralReducer";
 import style from "./Header.module.css";
-import logo from "../../Assets/logo.png";
+import logo from "../../assets/logo.png";
 import { useSelector } from "react-redux";
-import { AppStateType } from "../../Redux/NewStore";
+import { AppStateType } from "../../redux/NewStore";
 import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 import useGeolocation from "react-hook-geolocation";
 import { UpdateCityNameForm } from "./UpdateCityNameForm";
 import { NavLink } from "react-router-dom";
+import ChangerTheme from "./ChangerTheme";
 
 export const Header = React.memo(() => {
   const errorMessage = useSelector(
     (state: AppStateType) => state.general.error?.message
   );
+  const theme = useSelector((state: AppStateType) => state.general.theme);
 
   let dispatch = useDispatch();
   const updateCityName = (cityName: string) => {
@@ -54,8 +56,8 @@ export const Header = React.memo(() => {
   }, [errorMessage]);
 
   return (
-    <div className={style.header}>
-      <div className={style.logo}>
+    <div className={theme ? `${style.header} + ${style.light}` : style.header}>
+      <div className={theme ? `${style.logo} ${style.light}` : style.logo}>
         <div>
           <Toaster />
         </div>
@@ -64,10 +66,14 @@ export const Header = React.memo(() => {
           <h4>WeatherApp</h4>
         </NavLink>
       </div>
+      <div>
+        <ChangerTheme theme={theme} />
+      </div>
       <div className={style.updateForm}>
         <UpdateCityNameForm
           updateCityName={updateCityName}
           updateTempType={updateTempType}
+          theme={theme}
         />
       </div>
     </div>

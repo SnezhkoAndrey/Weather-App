@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getForecastWeatherInfo } from "../../Redux/NewForecastReducer";
+import { getForecastWeatherInfo } from "../../redux/NewForecastReducer";
 import { AnyAction } from "redux";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { AppStateType } from "../../Redux/NewStore";
+import { AppStateType } from "../../redux/NewStore";
 import style from "./ForecastWeather.module.css";
 import { ForecastDay } from "./ForecastDay";
 import { WeatherDay } from "./WeatherDay/WeatherDay";
-import { ForecastDayType } from "../../Types/types";
-import { Preloader } from "../../common/Preloader";
+import { ForecastDayType } from "../../types/types";
+import { Preloader } from "../../components/Preloader/Preloader";
 
 export const ForecastWeather = React.memo(() => {
   let dispatch = useDispatch();
@@ -27,6 +27,7 @@ export const ForecastWeather = React.memo(() => {
   const isFetching = useSelector(
     (state: AppStateType) => state.general.isFetching
   );
+  const theme = useSelector((state: AppStateType) => state.general.theme);
 
   useEffect(() => {
     getForecastWeatherData(cityName);
@@ -52,7 +53,10 @@ export const ForecastWeather = React.memo(() => {
     <div>
       {isFetching ? <Preloader /> : null}
       <div className={style.buttonGo}>
-        <NavLink className={style.navlink} to={"/current"}>
+        <NavLink
+          className={theme ? `${style.navlink} ${style.light}` : style.navlink}
+          to={"/current"}
+        >
           {"< Current Weather"}
         </NavLink>
       </div>
@@ -79,6 +83,7 @@ export const ForecastWeather = React.memo(() => {
               }}
               tempType={tempType}
               active={day === fd.date && active}
+              theme={theme}
             />
           ))}
         </div>
@@ -91,6 +96,7 @@ export const ForecastWeather = React.memo(() => {
                     infoDay={cd.hour}
                     key={cd.date}
                     tempType={tempType}
+                    theme={theme}
                   />
                 ))
               ) : (
