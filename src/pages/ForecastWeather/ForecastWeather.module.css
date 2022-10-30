@@ -59,11 +59,8 @@
     scrollbar-width: none;
 }
 
-.forecastDay::-webkit-scrollbar {
-    display: none;
-}
-
 .lastUpdate {
+    padding: 15px 0 0 0;
     font-size: 12px;
 }
 
@@ -97,6 +94,7 @@
     }
 
     .lastUpdate {
+        padding: 0;
         font-size: 15px;
     }
     

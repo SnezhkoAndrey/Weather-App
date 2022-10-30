@@ -40,18 +40,18 @@ export const UpdateCityNameForm: React.FC<PropsType> = React.memo((props) => {
                   placeholder="Enter your city..."
                 />
               </div>
-            </div>
-            <div className={style.tempOptionItem}>
-              <select
-                className={addTheme(style.tempOption)}
-                name="tempType"
-                onChange={() => {
-                  setChangeValue(!value);
-                }}
-              >
-                <option value="true">°C</option>
-                <option value="false">°F</option>
-              </select>
+              <div className={style.tempOptionItem}>
+                <select
+                  className={addTheme(style.tempOption)}
+                  name="tempType"
+                  onChange={() => {
+                    setChangeValue(!value);
+                  }}
+                >
+                  <option value="true">°C</option>
+                  <option value="false">°F</option>
+                </select>
+              </div>
             </div>
             <div className={style.buttonFindItem}>
               <button className={addTheme(style.buttonFind)} type={"submit"}>

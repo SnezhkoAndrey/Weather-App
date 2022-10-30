@@ -9,12 +9,8 @@
         scrollbar-width: none;
     }
 
-.weatherDay::-webkit-scrollbar {
-    display: none;
-}
-
 .hourDayInfo {
-    margin: 0 0 20px 0;
+    margin: 10px 0 10px 0;
     padding: 0 20px 5px 20px;
     width: 220px;
     border-radius: 10px;

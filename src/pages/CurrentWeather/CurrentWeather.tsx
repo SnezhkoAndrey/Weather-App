@@ -34,7 +34,7 @@ export const CurrentWeather = React.memo(() => {
 
   return (
     <>
-      {isFetching ? <Preloader /> : null}
+      <div>{isFetching ? <Preloader /> : null}</div>
       <NavLink className={addTheme(style.navlink)} to={"/forecast"}>
         {"< 14-day forecast"}
       </NavLink>

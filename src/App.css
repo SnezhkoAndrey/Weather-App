@@ -4,9 +4,27 @@ body {
   color: white;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #424242 #5a5a5a;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 3px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #5a5a5a;
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #424242;
+    border-radius: 10px;
+  }
 
 .app {
   width: 100%;
@@ -41,6 +59,10 @@ body::-webkit-scrollbar {
 
 
 @media (max-width: 450px) {
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
   .infoWeather {
     margin: 0;
     padding: 20px 0;
