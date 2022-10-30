@@ -2,12 +2,12 @@ import axios from "axios";
 
 export const currentWeatherAPI = {
   getCurrentWeather(city: string | number[] | null) {
-    let options = {
+    const options = {
       method: "GET",
       url: "https://api.weatherapi.com/v1/current.json",
       params: {
         q: `${city}`,
-        key: `7cccd13bf522431bbc7145324221910`,
+        key: process.env.REACT_APP_API,
       },
     };
     return axios.request(options);
@@ -15,12 +15,12 @@ export const currentWeatherAPI = {
 };
 export const forecastWeatherAPI = {
   getForecastWeather(city: string | number[] | null) {
-    let options = {
+    const options = {
       method: "GET",
       url: "https://api.weatherapi.com/v1/forecast.json",
       params: {
         q: `${city}`,
-        key: `7cccd13bf522431bbc7145324221910`,
+        key: process.env.REACT_APP_API,
         days: "14",
       },
     };

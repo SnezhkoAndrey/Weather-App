@@ -1,4 +1,5 @@
 import React from "react";
+import useTheme from "../../hooks/useLightTheme";
 import { ForecastDayType } from "../../types/types";
 import style from "./ForecastDay.module.css";
 
@@ -7,13 +8,14 @@ type PropsType = {
   onSelect: any;
   tempType: boolean;
   active: boolean;
-  theme: boolean;
 };
 
 export const ForecastDay: React.FC<PropsType> = React.memo((props) => {
   const goToOnSelected = () => {
     props.onSelect();
   };
+
+  const { addTheme } = useTheme(style.light);
 
   return (
     <div
@@ -23,38 +25,14 @@ export const ForecastDay: React.FC<PropsType> = React.memo((props) => {
           : style.forecastDay
       }
     >
-      <div
-        className={
-          props.theme
-            ? `${style.forecastDayItem} ${style.light}`
-            : style.forecastDayItem
-        }
-      >
-        <div
-          className={
-            props.theme
-              ? `${style.forecastDate} ${style.light}`
-              : style.forecastDate
-          }
-        >
+      <div className={addTheme(style.forecastDayItem)}>
+        <div className={addTheme(style.forecastDate)}>
           {props.forecastDay.date}
         </div>
         <div
-          className={
-            props.theme
-              ? `${style.forecastMaxTemp} ${style.forecastItem} ${style.light}`
-              : `${style.forecastMaxTemp} ${style.forecastItem}`
-          }
+          className={addTheme(`${style.forecastMaxTemp} ${style.forecastItem}`)}
         >
-          <div
-            className={
-              props.theme
-                ? `${style.forecastTitle} ${style.light}`
-                : style.forecastTitle
-            }
-          >
-            Max:
-          </div>
+          <div className={addTheme(style.forecastTitle)}>Max:</div>
           <div className={style.forecastText}>
             {props.tempType
               ? props.forecastDay.day.maxtemp_c + " " + "°C"
@@ -62,21 +40,9 @@ export const ForecastDay: React.FC<PropsType> = React.memo((props) => {
           </div>
         </div>
         <div
-          className={
-            props.theme
-              ? `${style.forecastMinTemp} ${style.forecastItem} ${style.light}`
-              : `${style.forecastMinTemp} ${style.forecastItem}`
-          }
+          className={addTheme(`${style.forecastMinTemp} ${style.forecastItem}`)}
         >
-          <div
-            className={
-              props.theme
-                ? `${style.forecastTitle} ${style.light}`
-                : style.forecastTitle
-            }
-          >
-            Min:
-          </div>
+          <div className={addTheme(style.forecastTitle)}>Min:</div>
           <div className={style.forecastText}>
             {props.tempType
               ? props.forecastDay.day.mintemp_c + " " + "°C"
@@ -84,72 +50,26 @@ export const ForecastDay: React.FC<PropsType> = React.memo((props) => {
           </div>
         </div>
         <div
-          className={
-            props.theme
-              ? `${style.chanceOfRain} ${style.forecastItem} ${style.light}`
-              : `${style.chanceOfRain} ${style.forecastItem}`
-          }
+          className={addTheme(`${style.chanceOfRain} ${style.forecastItem}`)}
         >
-          <div
-            className={
-              props.theme
-                ? `${style.forecastTitle} ${style.light}`
-                : style.forecastTitle
-            }
-          >
-            Chance of rain:{" "}
-          </div>
+          <div className={addTheme(style.forecastTitle)}>Chance of rain: </div>
           <div className={style.forecastText}>
             {props.forecastDay.day.daily_chance_of_rain + " " + "%"}
           </div>
         </div>
-        <div
-          className={
-            props.theme
-              ? `${style.sunrise} ${style.forecastItem} ${style.light}`
-              : `${style.sunrise} ${style.forecastItem}`
-          }
-        >
-          <div
-            className={
-              props.theme
-                ? `${style.forecastTitle} ${style.light}`
-                : style.forecastTitle
-            }
-          >
-            Sunrise:{" "}
-          </div>
+        <div className={addTheme(`${style.sunrise} ${style.forecastItem}`)}>
+          <div className={addTheme(style.forecastTitle)}>Sunrise: </div>
           <div className={style.forecastText}>
             {props.forecastDay.astro.sunrise}
           </div>
         </div>
-        <div
-          className={
-            props.theme
-              ? `${style.sunset} ${style.forecastItem} ${style.light}`
-              : `${style.sunset} ${style.forecastItem}`
-          }
-        >
-          <div
-            className={
-              props.theme
-                ? `${style.forecastTitle} ${style.light}`
-                : style.forecastTitle
-            }
-          >
-            Sunset:{" "}
-          </div>
+        <div className={addTheme(`${style.sunset} ${style.forecastItem}`)}>
+          <div className={addTheme(style.forecastTitle)}>Sunset: </div>
           <div className={style.forecastText}>
             {props.forecastDay.astro.sunset}
           </div>
         </div>
-        <div
-          className={
-            props.theme
-              ? `${style.buttonDetails} ${style.light}`
-              : style.buttonDetails
-          }
-        >
+        <div className={addTheme(style.buttonDetails)}>
           <button onClick={goToOnSelected}>Details</button>
         </div>
       </div>

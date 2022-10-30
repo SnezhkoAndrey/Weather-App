@@ -10,9 +10,10 @@ import { ForecastDay } from "./ForecastDay";
 import { WeatherDay } from "./WeatherDay/WeatherDay";
 import { ForecastDayType } from "../../types/types";
 import { Preloader } from "../../components/Preloader/Preloader";
+import useTheme from "../../hooks/useLightTheme";
 
 export const ForecastWeather = React.memo(() => {
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
   const getForecastWeatherData = (cityName: string | Array<number>) => {
     dispatch(getForecastWeatherInfo(cityName) as unknown as AnyAction);
   };
@@ -27,7 +28,6 @@ export const ForecastWeather = React.memo(() => {
   const isFetching = useSelector(
     (state: AppStateType) => state.general.isFetching
   );
-  const theme = useSelector((state: AppStateType) => state.general.theme);
 
   useEffect(() => {
     getForecastWeatherData(cityName);
@@ -49,14 +49,13 @@ export const ForecastWeather = React.memo(() => {
     }
   };
 
+  const { addTheme } = useTheme(style.light);
+
   return (
-    <div>
+    <>
       {isFetching ? <Preloader /> : null}
       <div className={style.buttonGo}>
-        <NavLink
-          className={theme ? `${style.navlink} ${style.light}` : style.navlink}
-          to={"/current"}
-        >
+        <NavLink className={addTheme(style.navlink)} to={"/current"}>
           {"< Current Weather"}
         </NavLink>
       </div>
@@ -83,32 +82,28 @@ export const ForecastWeather = React.memo(() => {
               }}
               tempType={tempType}
               active={day === fd.date && active}
-              theme={theme}
             />
           ))}
         </div>
         <div className={style.carrousel}>
           <article className={style.card}>
-            <div>
-              {active ? (
-                currentDay.map((cd) => (
-                  <WeatherDay
-                    infoDay={cd.hour}
-                    key={cd.date}
-                    tempType={tempType}
-                    theme={theme}
-                  />
-                ))
-              ) : (
-                <div></div>
-              )}
-            </div>
+            {active ? (
+              currentDay.map((cd) => (
+                <WeatherDay
+                  infoDay={cd.hour}
+                  key={cd.date}
+                  tempType={tempType}
+                />
+              ))
+            ) : (
+              <div></div>
+            )}
           </article>
         </div>
         <div className={style.lastUpdate}>
           Last update: {forecastWeather.current.last_updated}
         </div>
       </div>
-    </div>
+    </>
   );
 });

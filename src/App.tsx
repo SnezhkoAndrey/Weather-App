@@ -8,11 +8,16 @@ import { AppStateType } from "./redux/NewStore";
 const App = React.memo(() => {
   const theme = useSelector((state: AppStateType) => state.general.theme);
 
+  const addThemeLight = (className: string) => {
+    const themeClassLight = theme ? " light" : "";
+
+    return className + themeClassLight;
+  };
   return (
-    <div className={theme ? "app light" : "app"}>
-      <div className={theme ? "app-wrapper light" : "app-wrapper"}>
+    <div className={addThemeLight("app")}>
+      <div className={addThemeLight("app-wrapper")}>
         <Header />
-        <div className={theme ? "infoWeather light" : "infoWeather"}>
+        <div className={addThemeLight("infoWeather")}>
           <AppRoutes />
         </div>
       </div>

@@ -16,14 +16,14 @@ import useGeolocation from "react-hook-geolocation";
 import { UpdateCityNameForm } from "./UpdateCityNameForm";
 import { NavLink } from "react-router-dom";
 import ChangerTheme from "./ChangerTheme";
+import useTheme from "../../hooks/useLightTheme";
 
 export const Header = React.memo(() => {
   const errorMessage = useSelector(
     (state: AppStateType) => state.general.error?.message
   );
-  const theme = useSelector((state: AppStateType) => state.general.theme);
 
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
   const updateCityName = (cityName: string) => {
     dispatch(updateCityNameAC(cityName) as unknown as AnyAction);
   };
@@ -55,25 +55,22 @@ export const Header = React.memo(() => {
     }
   }, [errorMessage]);
 
+  const { addTheme } = useTheme(style.light);
+
   return (
-    <div className={theme ? `${style.header} + ${style.light}` : style.header}>
-      <div className={theme ? `${style.logo} ${style.light}` : style.logo}>
-        <div>
-          <Toaster />
-        </div>
+    <div className={addTheme(style.header)}>
+      <div className={addTheme(style.logo)}>
+        <Toaster />
         <NavLink className={style.logoNavlink} to={"/"}>
           <img className={style.logoImage} src={logo} />
           <h4>WeatherApp</h4>
         </NavLink>
       </div>
-      <div>
-        <ChangerTheme theme={theme} />
-      </div>
+      <ChangerTheme />
       <div className={style.updateForm}>
         <UpdateCityNameForm
           updateCityName={updateCityName}
           updateTempType={updateTempType}
-          theme={theme}
         />
       </div>
     </div>

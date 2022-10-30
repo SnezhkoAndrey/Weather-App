@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import style from "./Header.module.css";
+import useTheme from "../../hooks/useLightTheme";
 
 type PropsType = {
   updateCityName: (NewCityName: string) => void;
   updateTempType: (NewTempSelect: boolean) => void;
-  theme: boolean;
 };
 
 export const UpdateCityNameForm: React.FC<PropsType> = React.memo((props) => {
+  const [value, setChangeValue] = useState(true);
+  useEffect(() => {
+    props.updateTempType(value);
+  }, [value]);
+
+  const { addTheme } = useTheme(style.light);
   return (
     <Formik
       enableReinitialize
@@ -20,11 +26,6 @@ export const UpdateCityNameForm: React.FC<PropsType> = React.memo((props) => {
         if (values.cityName.length >= 1) {
           props.updateCityName(values.cityName);
         }
-        if (values.tempType === "true") {
-          props.updateTempType(true);
-        } else {
-          props.updateTempType(false);
-        }
       }}
     >
       {({}) => (
@@ -33,40 +34,27 @@ export const UpdateCityNameForm: React.FC<PropsType> = React.memo((props) => {
             <div className={style.findParams}>
               <div className={style.findListItem}>
                 <Field
-                  className={
-                    props.theme
-                      ? `${style.findList} ${style.light}`
-                      : style.findList
-                  }
+                  className={addTheme(style.findList)}
                   name={"cityName"}
                   type={"text"}
                   placeholder="Enter your city..."
                 />
               </div>
-              <div className={style.tempOptionItem}>
-                <Field
-                  className={
-                    props.theme
-                      ? `${style.tempOption} ${style.light}`
-                      : style.tempOption
-                  }
-                  name="tempType"
-                  as={"select"}
-                >
-                  <option value="true">°C</option>
-                  <option value="false">°F</option>
-                </Field>
-              </div>
+            </div>
+            <div className={style.tempOptionItem}>
+              <select
+                className={addTheme(style.tempOption)}
+                name="tempType"
+                onChange={() => {
+                  setChangeValue(!value);
+                }}
+              >
+                <option value="true">°C</option>
+                <option value="false">°F</option>
+              </select>
             </div>
             <div className={style.buttonFindItem}>
-              <button
-                className={
-                  props.theme
-                    ? `${style.buttonFind} ${style.light}`
-                    : style.buttonFind
-                }
-                type={"submit"}
-              >
+              <button className={addTheme(style.buttonFind)} type={"submit"}>
                 Find
               </button>
             </div>
