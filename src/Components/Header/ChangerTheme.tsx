@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { AnyAction } from "redux";
-import useTheme from "../../hooks/useLightTheme";
 import { changeTheme } from "../../redux/GeneralReducer";
 import style from "./Header.module.css";
 import { styled } from "@mui/material/styles";
