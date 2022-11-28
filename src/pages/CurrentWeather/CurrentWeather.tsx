@@ -30,6 +30,8 @@ export const CurrentWeather = React.memo(() => {
     getCurrentWeatherData(cityName);
   }, [cityName]);
 
+  console.log(cityName);
+
   const { addTheme } = useTheme(style.light);
 
   return (

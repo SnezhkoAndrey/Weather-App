@@ -34,14 +34,13 @@ export const Header = React.memo(() => {
     dispatch(updateTempTypeAC(tempSelect) as unknown as AnyAction);
   };
 
-  const geolocation = useGeolocation();
-  const geolocationCoordinates = [geolocation.latitude, geolocation.longitude];
+  const { latitude, longitude } = useGeolocation();
 
   useEffect(() => {
-    if (!!geolocationCoordinates[0]) {
-      updateCityNameCoordinates(geolocationCoordinates);
+    if (!!latitude || !!longitude) {
+      updateCityNameCoordinates([latitude, longitude]);
     }
-  }, [geolocationCoordinates]);
+  }, [latitude, longitude]);
 
   useEffect(() => {
     if (!!errorMessage) {
